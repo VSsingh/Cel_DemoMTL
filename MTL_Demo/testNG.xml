@@ -1,0 +1,43 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+
+	<test name="MyRibbonDeletion">
+		<classes>
+			<class name="Demo.MyRibbonDeletion_Demo" />
+			
+		</classes>
+	</test>
+
+	<test name="Search">
+		<classes>
+			<class name="Demo.Search1" />
+		
+		</classes>
+	</test>
+	<test name="MyRibbonRegister">
+		<classes>
+			<class name="Demo.MyRibbonRegistration_Demo" />
+		
+		</classes>
+	</test>
+	<test name="Spoke_BackDemo">
+		<classes>
+			<class name="Demo.Spoke_BackDemo" />
+		
+		</classes>
+	</test>
+	<test name="MTL_BackScreen">
+		<classes>
+			<class name="Demo.MTL_BackDemo" />
+		
+		</classes>
+	</test>
+	<test name="RibbonRegister_Landscape">
+		<classes>
+			<class name="Demo.RIbbonRegister_Landscape" />
+		
+		</classes>
+	</test>
+
+</suite>

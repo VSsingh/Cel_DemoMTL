@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite - Demo]">
+  <test name="Test MTL(failed)" preserve-order="true">
+    <classes>
+      <class name="Demo.MyRibbonRegistration_Demo">
+        <methods>
+          <include name="setup_RibbRegist"/>
+          <include name="ribbon_Register"/>
+        </methods>
+      </class> <!-- Demo.MyRibbonRegistration_Demo -->
+      <class name="Demo.Spoke_BackDemo">
+        <methods>
+          <include name="setup_SpokeBack"/>
+        </methods>
+      </class> <!-- Demo.Spoke_BackDemo -->
+      <class name="Demo.Search1">
+        <methods>
+          <include name="search"/>
+          <include name="Setup"/>
+        </methods>
+      </class> <!-- Demo.Search1 -->
+      <class name="Demo.MyRibbonDeletion_Demo">
+        <methods>
+          <include name="setup"/>
+          <include name="ribbon_Register"/>
+          <include name="ribbon_delete"/>
+        </methods>
+      </class> <!-- Demo.MyRibbonDeletion_Demo -->
+      <class name="Demo.MTL_BackDemo">
+        <methods>
+          <include name="setup_MtlBack"/>
+        </methods>
+      </class> <!-- Demo.MTL_BackDemo -->
+    </classes>
+  </test> <!-- Test MTL(failed) -->
+</suite> <!-- Failed suite [Suite - Demo] -->

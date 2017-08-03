@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [MTL suite]">
+  <test name="Default Demo(failed)" preserve-order="true">
+    <classes>
+      <class name="Demo.MyRibbonDeletion_Demo">
+        <methods>
+          <include name="setup"/>
+          <include name="ribbon_Register1"/>
+          <include name="ribbon_delete"/>
+        </methods>
+      </class> <!-- Demo.MyRibbonDeletion_Demo -->
+      <class name="Demo.MyRibbonRegistration_Demo">
+        <methods>
+          <include name="setup_RibbRegist"/>
+        </methods>
+      </class> <!-- Demo.MyRibbonRegistration_Demo -->
+    </classes>
+  </test> <!-- Default Demo(failed) -->
+</suite> <!-- Failed suite [MTL suite] -->

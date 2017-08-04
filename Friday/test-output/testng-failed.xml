@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)" preserve-order="true">
+    <classes>
+      <class name="Devices.Ribbon_back">
+        <methods>
+          <include name="ribbon_Register"/>
+          <include name="ribbon_delete"/>
+          <include name="close"/>
+          <include name="setup"/>
+          <include name="hamburger_menu"/>
+        </methods>
+      </class> <!-- Devices.Ribbon_back -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

@@ -21,7 +21,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.SystemClock;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
@@ -36,7 +35,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 
-public class MTL_BackDemo {
+public class Nexus_Demo {
 	
 	AndroidDriver driver;
 	
@@ -46,7 +45,7 @@ public class MTL_BackDemo {
 	
 	 public void setup_MtlBack() throws MalformedURLException
 	 
-	 {	
+	 {
 		
 		
 		System.out.println("Ssetting desired capibilities");
@@ -54,15 +53,14 @@ public class MTL_BackDemo {
 		cap.setCapability("no-reset", "true");
 		cap.setCapability("full-reset", "false");
 		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
-		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "nec-pc_ts508fam-6b39b22");
+		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "ENU7N15A2004130");
 		cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "20");
-		cap.setCapability("version", "6.0.1");
+		cap.setCapability("version", "8.0.0");
 		
 		cap.setCapability("appPackage", "jp.co.necp.mytimeline");
 		cap.setCapability("appActivity", "jp.co.necp.mytimeline.MainActivity");
 		driver=new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),cap);
-		cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "90");
-
+		
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		
 	 }
@@ -73,22 +71,14 @@ public class MTL_BackDemo {
 	{
 			
 		
-		 System.out.println("Navigating to homescreen");
-		 
-		
-	     WebDriverWait wait=(WebDriverWait) new WebDriverWait(driver, 20).ignoring(TimeoutException.class,NoSuchElementException.class);
-		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("jp.co.necp.mytimeline:id/weather_icon"))); 
-		 WebElement weather_icon = driver.findElement(By.id("jp.co.necp.mytimeline:id/weather_icon"));
-		 System.out.println("Weather icon displayed value : " +weather_icon.isDisplayed()); 
-		 System.out.println("Weather icon under homepage is verified");
-		  
-		   // wait for 9 sec under homescreen
-			  try{Thread.sleep(9000);
-			  }
-			  catch(Exception e){} //every 30sec
-			    ((PressesKeyCode) driver).pressKeyCode(AndroidKeyCode.BACK);
-			 
-		        	System.out.println("Application back key is pressed");
+		 System.out.println("Hello1");
+		WebDriverWait wait=(WebDriverWait) new WebDriverWait(driver, 20).ignoring(TimeoutException.class,NoSuchElementException.class);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("jp.co.necp.mytimeline:id/weather_icon")));
+		  System.out.println("Weather icon under homepage is verified");
+		  driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+	    ((PressesKeyCode) driver).pressKeyCode(AndroidKeyCode.BACK);
+	  
+		System.out.println("Application back key is pressed");
 		
 	}
 		

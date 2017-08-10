@@ -45,9 +45,9 @@ public class MyRibbonDeletion_Demo {
 		cap.setCapability("no-reset", "true");
 		cap.setCapability("full-reset", "false");
 		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
-		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "nec-pc_ts508fam-6b3f9b22");
+		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "nec-pc_ts508baw-LenovoTAB2A8");
 		cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "20");
-		cap.setCapability("version", "6.0.1");
+		cap.setCapability("version", "5.0.2");
 		
 		cap.setCapability("appPackage", "jp.co.necp.mytimeline");
 		cap.setCapability("appActivity", "jp.co.necp.mytimeline.MainActivity");

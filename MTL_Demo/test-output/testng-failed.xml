@@ -1,39 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [TestAll]">
-  <test name="Search(failed)" preserve-order="true">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)" preserve-order="true">
     <classes>
-      <class name="Demo.MyRibbonDeletion_Demo">
-        <methods>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- Demo.MyRibbonDeletion_Demo -->
-      <class name="Demo.MTL_BackDemo">
-        <methods>
-          <include name="setup_MtlBack"/>
-        </methods>
-      </class> <!-- Demo.MTL_BackDemo -->
-      <class name="Demo.Search1">
-        <methods>
-          <include name="search"/>
-          <include name="Setup"/>
-        </methods>
-      </class> <!-- Demo.Search1 -->
-      <class name="Demo.MyRibbonRegistration_Demo">
-        <methods>
-          <include name="setup_RibbRegist"/>
-        </methods>
-      </class> <!-- Demo.MyRibbonRegistration_Demo -->
       <class name="Demo.Spoke_BackDemo">
         <methods>
           <include name="setup_SpokeBack"/>
+          <include name="test_Spoke"/>
         </methods>
       </class> <!-- Demo.Spoke_BackDemo -->
-      <class name="Demo.RIbbonRegister_Landscape">
-        <methods>
-          <include name="setup_RibbRegist"/>
-        </methods>
-      </class> <!-- Demo.RIbbonRegister_Landscape -->
     </classes>
-  </test> <!-- Search(failed) -->
-</suite> <!-- Failed suite [TestAll] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

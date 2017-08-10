@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10118" started-at="2017-07-24T13:11:55Z" finished-at="2017-07-24T13:12:05Z">
+  <suite name="Default suite" duration-ms="56324" started-at="2017-08-10T06:37:20Z" finished-at="2017-08-10T06:38:16Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10118" started-at="2017-07-24T13:11:55Z" finished-at="2017-07-24T13:12:05Z">
-      <class name="Demo.MTL_BackDemo">
-        <test-method status="PASS" signature="setup_MtlBack()[pri:0, instance:Demo.MTL_BackDemo@55f3ddb1]" name="setup_MtlBack" is-config="true" duration-ms="7196" started-at="2017-07-24T18:41:55Z" finished-at="2017-07-24T18:42:02Z">
+    <test name="Default test" duration-ms="56324" started-at="2017-08-10T06:37:20Z" finished-at="2017-08-10T06:38:16Z">
+      <class name="Demo.Spoke_BackDemo">
+        <test-method status="PASS" signature="setup_SpokeBack()[pri:0, instance:Demo.Spoke_BackDemo@55f3ddb1]" name="setup_SpokeBack" is-config="true" duration-ms="10230" started-at="2017-08-10T12:07:20Z" finished-at="2017-08-10T12:07:30Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup_MtlBack -->
-        <test-method status="PASS" signature="test_Home()[pri:0, instance:Demo.MTL_BackDemo@55f3ddb1]" name="test_Home" duration-ms="2922" started-at="2017-07-24T18:42:02Z" finished-at="2017-07-24T18:42:05Z">
+        </test-method> <!-- setup_SpokeBack -->
+        <test-method status="PASS" signature="test_Spoke()[pri:0, instance:Demo.Spoke_BackDemo@55f3ddb1]" name="test_Spoke" duration-ms="46084" started-at="2017-08-10T12:07:30Z" finished-at="2017-08-10T12:08:16Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test_Home -->
-      </class> <!-- Demo.MTL_BackDemo -->
+        </test-method> <!-- test_Spoke -->
+      </class> <!-- Demo.Spoke_BackDemo -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

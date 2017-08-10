@@ -61,7 +61,7 @@ public class Spoke_BackDemo {
 		cap.setCapability("appActivity", "jp.co.necp.mytimeline.MainActivity");
 		driver=new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),cap);
 		
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 	 }
 	
@@ -71,7 +71,7 @@ public class Spoke_BackDemo {
 		MobileElement hamburger_button =(MobileElement)(driver.findElement(By.id("jp.co.necp.mytimeline:id/top_header_ribbon_button")));
 		hamburger_button.click();
 		
-		while(driver.findElements(By.name("国際")).size()==0)
+		while(driver.findElements(By.name("音楽")).size()==0)
 		{
 			Dimension dimensions = driver.manage().window().getSize();
 			Double screenHeightStart = dimensions.getHeight() * 0.5;
@@ -81,15 +81,19 @@ public class Spoke_BackDemo {
 			driver.swipe(0,scrollStart,0,scrollEnd,2000);
 		}
 		
-		if(driver.findElements(By.name("国際")).size()>0)
+		if(driver.findElements(By.xpath("//android.widget.TextView[@text='音楽']")).size()>0)
 		{
-			driver.findElement(By.name("国際")).click();
-			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			driver.findElement(By.xpath("//android.widget.TextView[@text='音楽']")).click();
+			driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		}   
+		
+		  try{Thread.sleep(9000);
+		  }
+		  catch(Exception e){} //every 30sec
 		
 		System.out.println("Press android back key");
 		((PressesKeyCode) driver).pressKeyCode(AndroidKeyCode.BACK);
-		WebDriverWait wait = new WebDriverWait(driver,15);
+		WebDriverWait wait = new WebDriverWait(driver,20);
 		
 		 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.ImageView[contains(@resource-id,'weather_icon')]")));
 		WebElement weather_icon=driver.findElement(By.xpath("//android.widget.ImageView[contains(@resource-id,'weather_icon')]"));

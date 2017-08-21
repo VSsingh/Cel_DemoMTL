@@ -1,6 +1,6 @@
 //Prerequisite all ribbons must be deleted first
 
-package Devices;
+package Demo;
 
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
@@ -21,16 +21,13 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import com.sun.corba.se.impl.orbutil.threadpool.TimeoutException;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 
-public class Ribbon_back {
+public class MyRibbonBack {
 	
 	AndroidDriver driver;
 	
@@ -59,55 +56,54 @@ public class Ribbon_back {
 	public void ribbon_Register() 
 	{
 System.out.println("CLicking on settings icon");
-		WebElement settings_icon = driver.findElement(By.id("jp.co.necp.mytimeline:id/header_setting_button"));
+		WebElement settings_icon = driver.findElement(By.id(Repository_Archive.settingIcon_id));
 		settings_icon.click();
-		WebElement My_ribbname = driver.findElement(By.name("マイリボン設定"));
+		WebElement My_ribbname = driver.findElement(By.name(Repository_Archive.ribbonIcon_name));
 		My_ribbname.click();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 System.out.println("Hault");
-		WebDriverWait waitx = (WebDriverWait) new WebDriverWait(driver,10).ignoring(TimeoutException.class,NoSuchElementException.class);
+		WebDriverWait waitx = (WebDriverWait) new WebDriverWait(driver,10);
 		waitx.until(ExpectedConditions.visibilityOfElementLocated(By.name("新規作成")));
-		WebElement add_ribbon = driver.findElement(By.name("新規作成"));
+		WebElement add_ribbon = driver.findElement(By.name(Repository_Archive.RibbonAddButton_name));
 		add_ribbon.click();
 		// Enter name in my ribbon text field
-		WebElement enter_ribbonName = driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_setting_add_keyword_text"));
-System.out.println("Registering ribbon with name Intel");
-		String ribbon_name="Intel";
-		enter_ribbonName.sendKeys(ribbon_name);
+		WebElement enter_ribbonName = driver.findElement(By.id(Repository_Archive.RibbonTextField_id));
+//System.out.println("Registering ribbon with name :"+enter_ribbonName.getText());
+		enter_ribbonName.sendKeys(Repository_Archive.UserRibbon_name);
 		//click create ribbon button
-		WebElement hit_createRibbon = driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_setting_keyword_add_button"));
+		WebElement hit_createRibbon = driver.findElement(By.id(Repository_Archive.RibbonAddTobutton_id));
 		hit_createRibbon.click();
-		WebElement created_ribbon=driver.findElement(By.name(ribbon_name));
+		WebElement created_ribbon=driver.findElement(By.name(Repository_Archive.UserRibbon_name));
 		System.out.println("Created ribbon under ribbon list is : "+created_ribbon.getText());
 System.out.println("Verification under ribbon registration screen");
         
 // Comparison between inserted ribbon name and created ribbon name
-        Assert.assertEquals(ribbon_name, created_ribbon.getText());
+        Assert.assertEquals(Repository_Archive.UserRibbon_name, created_ribbon.getText());
 		System.out.println("passed");
 		
-		WebElement final_submit = driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_setting_myribbon_update_button"));
+		WebElement final_submit = driver.findElement(By.id(Repository_Archive.RibbonRegisterbutton_id));
 		final_submit.click();
 		//wait for myribbon_decide_button
-		WebDriverWait wait1 = (WebDriverWait) new WebDriverWait(driver,10).ignoring(TimeoutException.class,NoSuchElementException.class);
-		wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id("jp.co.necp.mytimeline:id/myribbon_decide_button")));
-		WebElement myribbon_decide_button = driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_decide_button"));
+		WebDriverWait wait1 = (WebDriverWait) new WebDriverWait(driver,10);
+		wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id(Repository_Archive.RibbonDecidebutton_id)));
+		WebElement myribbon_decide_button = driver.findElement(By.id(Repository_Archive.RibbonDecidebutton_id));
 		myribbon_decide_button.click();
 System.out.println("Verification under ribbon Created list screen");	
 
 //Comparison between inserted ribbon name and created ribbon name     
         
-		Assert.assertEquals(ribbon_name, created_ribbon.getText());
+		Assert.assertEquals(Repository_Archive.UserRibbon_name, created_ribbon.getText());
 		}
 // Verification of created my ribbon under hamburger menu	
 		@Test(priority=1)
 		public void hamburger_menu()
 		{
-			WebElement settings_icon1 = driver.findElement(By.id("jp.co.necp.mytimeline:id/header_setting_button"));
+			WebElement settings_icon1 = driver.findElement(By.id(Repository_Archive.settingIcon_id));
 			settings_icon1.click();
-			WebElement hamburger_icon = driver.findElement(By.id("jp.co.necp.mytimeline:id/top_header_ribbon_button"));
+			WebElement hamburger_icon = driver.findElement(By.id(Repository_Archive.HamburgerMenu_id));
 			hamburger_icon.click();
 			
-			while(driver.findElements(By.name("Intel")).size()==0)
+			while(driver.findElements(By.name(Repository_Archive.UserRibbon_name)).size()==0)
 			{
 				Dimension dimensions = driver.manage().window().getSize();
 				Double screenHeightStart = dimensions.getHeight() * 0.5;
@@ -117,37 +113,22 @@ System.out.println("Verification under ribbon Created list screen");
 				driver.swipe(0,scrollStart,0,scrollEnd,2000);
 			}
 		
-			if(driver.findElements(By.name("Intel")).size()>0)
+			if(driver.findElements(By.name(Repository_Archive.UserRibbon_name)).size()>0)
 			{
-				driver.findElement(By.name("Intel")).click();
+				driver.findElement(By.name(Repository_Archive.UserRibbon_name)).click();
 			}   
-			WebDriverWait wait4=(WebDriverWait) new WebDriverWait(driver, 20).ignoring(TimeoutException.class,NoSuchElementException.class);
+			WebDriverWait wait4=(WebDriverWait) new WebDriverWait(driver, 20);
 
-			wait4.until(ExpectedConditions.presenceOfElementLocated(By.id(Repository.HomeIconId_id)));
-			 driver.pressKeyCode(AndroidKeyCode.BACK);
-			 WebDriverWait wait5=(WebDriverWait) new WebDriverWait(driver, 20).ignoring(TimeoutException.class,NoSuchElementException.class);
-
-				wait5.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Repository.weatherIcon_xpath)));
-
-		
+			wait4.until(ExpectedConditions.presenceOfElementLocated(By.id(Repository_Archive.HomeIconId_id)));
+			  try{Thread.sleep(9000);
+			  }
+			  catch(Exception e){} 
+			
+			driver.pressKeyCode(AndroidKeyCode.BACK);
 		}
-		/*		
-// Press Android back key		
-		@Test(priority=2)
-		public void AndroidBack()
-		{
-			 driver.pressKeyCode(AndroidKeyCode.BACK);
-System.out.println("Android key is pressed successfully");		
-		WebElement weather_icon=driver.findElement(By.xpath(Repository.weatherIcon_xpath));
-		WebDriverWait wait3=(WebDriverWait) new WebDriverWait(driver, 20).ignoring(TimeoutException.class,NoSuchElementException.class);
-
-		wait3.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Repository.weatherIcon_xpath)));
-System.out.println("Weather existence under homepage is verified");
-			 
-		}
-*/		
+				
 // delete created ribbon
-		
+	/*	
        @Test(priority=3)
        public void ribbon_delete()
        {
@@ -165,8 +146,8 @@ System.out.println("Weather existence under homepage is verified");
     	   e3.click();   // click on final delete icon
     	   
        }
-	
-	@AfterTest
+	*/
+/*	@AfterTest
 	public void close() throws InterruptedException
 	{
 		System.out.println("hello");
@@ -174,6 +155,6 @@ System.out.println("Weather existence under homepage is verified");
 		//driver.resetApp();
     }
 
-	
+*/	
 
 }

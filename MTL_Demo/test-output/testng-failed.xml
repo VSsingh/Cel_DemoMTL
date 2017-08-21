@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)" preserve-order="true">
     <classes>
-      <class name="Demo.Spoke_BackDemo">
+      <class name="Demo.shareMenu_ListArticles">
         <methods>
-          <include name="setup_SpokeBack"/>
-          <include name="test_Spoke"/>
+          <include name="test"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- Demo.Spoke_BackDemo -->
+      </class> <!-- Demo.shareMenu_ListArticles -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

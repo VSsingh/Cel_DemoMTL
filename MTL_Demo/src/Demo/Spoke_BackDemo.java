@@ -71,7 +71,7 @@ public class Spoke_BackDemo {
 		MobileElement hamburger_button =(MobileElement)(driver.findElement(By.id("jp.co.necp.mytimeline:id/top_header_ribbon_button")));
 		hamburger_button.click();
 		
-		while(driver.findElements(By.name("音楽")).size()==0)
+		while(driver.findElements(By.xpath("//android.widget.TextView[@text='音楽']")).size()==0)
 		{
 			Dimension dimensions = driver.manage().window().getSize();
 			Double screenHeightStart = dimensions.getHeight() * 0.5;

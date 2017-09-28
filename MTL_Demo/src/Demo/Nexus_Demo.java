@@ -72,6 +72,7 @@ public class Nexus_Demo {
 			
 		
 		 System.out.println("Hello1");
+		 
 		WebDriverWait wait=(WebDriverWait) new WebDriverWait(driver, 20).ignoring(TimeoutException.class,NoSuchElementException.class);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("jp.co.necp.mytimeline:id/weather_icon")));
 		  System.out.println("Weather icon under homepage is verified");

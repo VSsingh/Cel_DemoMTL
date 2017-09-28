@@ -1,33 +1,17 @@
 package Demo;
 
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
+import MTL_Archive.Repository_Archive;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
-import static org.testng.Assert.assertEquals;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
@@ -37,10 +21,11 @@ public class MyRibbonRegistration_Demo {
 	AndroidDriver driver;
 	
 	
-	//Capabilities of apk going to automate
+// MTL app launching method
 	@BeforeTest
 	 public void setup_RibbRegist() throws MalformedURLException	
 	 {
+		
 		DesiredCapabilities cap=new DesiredCapabilities();
 		cap.setCapability("no-reset", "true");
 		cap.setCapability("full-reset", "false");
@@ -48,67 +33,79 @@ public class MyRibbonRegistration_Demo {
 		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "nec-pc_ts508fam-6b3f9b22");
 		cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "20");
 		cap.setCapability("version", "6.0.1");
-		
 		cap.setCapability("appPackage", "jp.co.necp.mytimeline");
 		cap.setCapability("appActivity", "jp.co.necp.mytimeline.MainActivity");
 		driver=new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),cap);
-		
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 	 }
 	
-	@Test(priority=0) 
-	public void ribbon_Register() 
+	@Test
+	public void ribbon_Register() throws TimeoutException,NoSuchElementException
 	{
-System.out.println("CLicking on settings icon");
-		WebElement settings_icon = driver.findElement(By.id("jp.co.necp.mytimeline:id/header_setting_button"));
+System.out.println("Clicking on settings icon");
+		WebElement settings_icon = driver.findElement(By.id(Repository_Archive.settingIcon_id));
 		settings_icon.click();
-		WebElement My_ribbname = driver.findElement(By.name("マイリボン設定"));
+		WebElement My_ribbname = driver.findElement(By.id(Repository_Archive.ribbonIcon_id));
 		My_ribbname.click();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-;
-		WebDriverWait waitx = (WebDriverWait) new WebDriverWait(driver,10).ignoring(TimeoutException.class,NoSuchElementException.class);
-		waitx.until(ExpectedConditions.visibilityOfElementLocated(By.name("新規作成")));
-		WebElement add_ribbon = driver.findElement(By.name("新規作成"));
+
+		
+/*	WebDriverWait wait1 = (WebDriverWait) new WebDriverWait(driver,30);
+		wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id(Repository_Archive.RibbonAddButton_id))); */
+		WebElement add_ribbon = driver.findElement(By.id(Repository_Archive.RibbonAddButton_id));
 		add_ribbon.click();
-		// Enter name in my ribbon text field
-		WebElement enter_ribbonName = driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_setting_add_keyword_text"));
-System.out.println("Registering ribbon with name Intel");
-		String ribbon_name="Intel";
-		enter_ribbonName.sendKeys(ribbon_name);
-		//click create ribbon button
-		WebElement hit_createRibbon = driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_setting_keyword_add_button"));
+
+// Enter name in my ribbon text field
+/*	WebDriverWait waitx = (WebDriverWait) new WebDriverWait(driver,30);
+		waitx.until(ExpectedConditions.visibilityOfElementLocated(By.id(Repository_Archive.RibbonTextField_id))); */
+		
+		WebElement enter_ribbonName = driver.findElement(By.id(Repository_Archive.RibbonTextField_id));
+
+		enter_ribbonName.click();
+
+System.out.println("Registering ribbon");
+	//	String ribbon_name=Repository_Archive.UserRibbon_name;
+		enter_ribbonName.sendKeys(Repository_Archive.UserRibbon_name);
+		driver.hideKeyboard();
+//click create ribbon button
+		  try{Thread.sleep(2000);
+		  }
+		  catch(Exception e){} 
+		WebElement hit_createRibbon = driver.findElement(By.id(Repository_Archive.RibbonAddTobutton_id));
 		hit_createRibbon.click();
-		WebDriverWait wait = (WebDriverWait) new WebDriverWait(driver,10).ignoring(TimeoutException.class,NoSuchElementException.class);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("jp.co.necp.mytimeline:id/myribbon_text")));
-		WebElement created_ribbon=driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_text"));
+
+/*		WebDriverWait wait2 = (WebDriverWait) new WebDriverWait(driver,30);
+		wait2.until(ExpectedConditions.visibilityOfElementLocated(By.id(Repository_Archive.RibbonRegisterbutton_id))); */
+		WebElement created_ribbon=driver.findElement(By.xpath(Repository_Archive.CreatedRibbon_xpath));
 System.out.println("Created ribbon under ribbon list is : "+created_ribbon.getText());
 System.out.println("Verification under ribbon registration screen");
-        AssertJUnit.assertEquals(ribbon_name, created_ribbon.getText());
+   //     Assert.assertEquals(ribbon_name, created_ribbon.getText());
 		
 		
-		WebElement final_submit = driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_setting_myribbon_update_button"));
+		WebElement final_submit = driver.findElement(By.id(Repository_Archive.RibbonRegisterbutton_id));
 		final_submit.click();
-		//wait for myribbon_decide_button
-		WebDriverWait wait1 = (WebDriverWait) new WebDriverWait(driver,10).ignoring(TimeoutException.class,NoSuchElementException.class);
-		wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id("jp.co.necp.mytimeline:id/myribbon_decide_button")));
-		WebElement myribbon_decide_button = driver.findElement(By.id("jp.co.necp.mytimeline:id/myribbon_decide_button"));
+
+//wait for myribbon_decide_button
+/*		WebDriverWait wait3 = (WebDriverWait) new WebDriverWait(driver,30);
+		wait3.until(ExpectedConditions.visibilityOfElementLocated(By.id(Repository_Archive.RibbonDecidebutton_id))); */
+		WebElement myribbon_decide_button = driver.findElement(By.id(Repository_Archive.RibbonDecidebutton_id));
 		myribbon_decide_button.click();
+
 System.out.println("Verification under ribbon Created list screen");		
-		AssertJUnit.assertEquals(ribbon_name, created_ribbon.getText());
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	//	Assert.assertEquals(ribbon_name, created_ribbon.getText());
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		}
 	
 	
 /*	@AfterTest
 	public void close() 
 	{
-	//	System.out.println("hello");
+		
+		System.out.println("hello");
 		driver.closeApp();
 		
 	
     }
-
 */
 
 }

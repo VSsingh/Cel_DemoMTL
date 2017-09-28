@@ -41,6 +41,7 @@ public class RIbbonRegister_Landscape {
 	@BeforeTest
 	 public void setup_RibbRegist() throws MalformedURLException	
 	 {
+		
 		DesiredCapabilities cap=new DesiredCapabilities();
 		cap.setCapability("no-reset", "true");
 		cap.setCapability("full-reset", "false");
@@ -52,7 +53,7 @@ public class RIbbonRegister_Landscape {
 		cap.setCapability("appPackage", "jp.co.necp.mytimeline");
 		cap.setCapability("appActivity", "jp.co.necp.mytimeline.MainActivity");
 		driver=new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),cap);
-		 driver.rotate(org.openqa.selenium.ScreenOrientation.LANDSCAPE);
+	//	 driver.rotate(org.openqa.selenium.ScreenOrientation.LANDSCAPE);
 		
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		

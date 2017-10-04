@@ -47,24 +47,26 @@ public void search1() throws TimeoutException,InterruptedException
 {
 System.out.println("Clicking on Search magnifying glass");
       driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-      WebElement searchIcon =driver.findElement(By.id(Repository_Archive.SearchButton_id));
+      WebElement searchIcon =driver.findElement(By.id(Repository_Archive.SearchButton_id));   // click on search icon
       searchIcon.click();
       WebDriverWait waitx = (WebDriverWait) new WebDriverWait(driver,10).ignoring(TimeoutException.class,NoSuchElementException.class);
-		waitx.until(ExpectedConditions.visibilityOfElementLocated(By.id(Repository_Archive.SearchFieldInput_id)));
+	  waitx.until(ExpectedConditions.visibilityOfElementLocated(By.id(Repository_Archive.SearchFieldInput_id)));
+	  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
       WebElement searchField =driver.findElement(By.id(Repository_Archive.SearchFieldInput_id));
-
-      searchField.sendKeys(Repository_Archive.SearchString_name);
+      searchField.sendKeys(Repository_Archive.SearchString_name);             // Type keyword in search inputbox
       driver.hideKeyboard();
       WebElement search =driver.findElement(By.xpath(Repository_Archive.SearchButton_xpath));
-      search.click();
+      search.click();                                                         // click on search icon
       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       WebElement registerribbon = driver.findElement(By.id(Repository_Archive.SearchSettingIcon_id));
-      registerribbon.click();
+      registerribbon.click();                                                
       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       WebElement foundkeyword =driver.findElement(By.id(Repository_Archive.SearchedText_id));
       String ribbonValue =foundkeyword.getText();
       Assert.assertEquals(ribbonValue,Repository_Archive.SearchString_name);
       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 
+      WebElement searchconditionbutton = driver.findElement(By.id(Repository_Archive.SearchConditionButton_id));
+      System.out.println("Search condition button text is : "+searchconditionbutton.getText() );
 }
 
 //Method to close the launched MTL app from foreground	

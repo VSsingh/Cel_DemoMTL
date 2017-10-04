@@ -28,15 +28,10 @@ public class MTL_BackDemo {
 	AndroidDriver driver;
 	
 // MTL app launching method
-	
 	@BeforeTest
 	 public void setup_MtlBack() throws MalformedURLException
 {	 
-	 Methods_Archive.MTL_Setup();
 	 
- 
-	 //helllo
-	/*
 		System.out.println("setting desired capabilities");
 		DesiredCapabilities cap=new DesiredCapabilities();
 		cap.setCapability("no-reset", "true");
@@ -50,7 +45,7 @@ public class MTL_BackDemo {
 		driver=new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),cap);
 		cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "90");
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
-		*/
+		
 }
 	 
 // Method to identify weather icon and press android back key to move app in background		
@@ -76,7 +71,6 @@ public class MTL_BackDemo {
 	}
 		
 // Method to close the launched MTL app from foreground	
-	
 	@AfterTest
 	public void close_Home() 
 	{
@@ -84,5 +78,5 @@ public class MTL_BackDemo {
 	//	driver.closeApp();
 		
     }
-	
+
 	}

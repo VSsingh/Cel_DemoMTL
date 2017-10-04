@@ -36,8 +36,9 @@ public class Repository_Archive {
     public static String SearchButton_xpath = "//android.widget.ImageButton[contains(@resource-id,'jp.co.necp.mytimeline:id/search_button')]";
     public static String SearchedText_id = "jp.co.necp.mytimeline:id/myribbon_text";
     public static String DisplayRibbonScreen_id = "jp.co.necp.mytimeline:id/myribbon_setting_myribbon_name_text";
-    
-    
+    public static String SearchConditionButton_id = "jp.co.necp.mytimeline:id/myribbon_setting_search_condition_button";
+    public static String CategoryRibbonSearched_xpath = ("//android.widget.TextView[contains(@resource-id,'jp.co.necp.mytimeline:id/category_name') and @text='Intel']");
+ ///search   
     
    
      

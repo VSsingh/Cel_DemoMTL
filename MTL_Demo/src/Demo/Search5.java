@@ -58,6 +58,7 @@ System.out.println("Clicking on Search magnifying glass");
       WebElement search =driver.findElement(By.xpath(Repository_Archive.SearchButton_xpath));
       search.click();
       ((PressesKeyCode) driver).pressKeyCode(AndroidKeyCode.BACK);   // click android back key
+      
       try{
   		 Thread.sleep(3000);
   	 }catch(Exception e){}
